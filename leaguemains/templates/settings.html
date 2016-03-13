@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block authorizedcontent %}
+			<!-- Settings -->
+			<form method="post" action="{% url 'settings' %}">{% csrf_token %}
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						Your settings
+					</div>
+					<div class="panel-body">
+						<div class="form-group row">
+							<label for="changeMail1" class="col-sm-2 form-control-label">E-Mail</label>
+							<div class="col-sm-10">
+								<input type="text" id="changeMail1" name="changeMail1" class="form-control" value="{{ user.email }}" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="changeMail2" class="col-sm-2 form-control-label">E-Mail (Confirm)</label>
+							<div class="col-sm-10">
+								<input type="text" id="changeMail2" name="changeMail2" class="form-control" value="{{ user.email }}" />
+							</div>
+						</div>
+						<div class="form-group required row">
+							<label for="changePassword1" class="col-sm-2 form-control-label">Password</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="changePassword1" name="changePassword1" placeholder="New Password" />
+							</div>
+						</div>
+						<div class="form-group required row">
+							<label for="changePassword2" class="col-sm-2 form-control-label">Password (Confirm)</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="changePassword2" name="changePassword2" placeholder="Confirm New Password" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="changeNickname" class="col-sm-2 form-control-label">Nickname</label>
+							<div class="col-sm-10">
+								<input type="text" id="changeNickname" name="changeNickname" class="form-control" value="{{ user.nickname }}" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="changeRegion" class="col-sm-2 form-control-label">Region</label>
+							<div class="col-sm-4">
+								<p>Your region is: {{ user.region|upper }}</p>
+							</div>
+							<div class="col-sm-6">
+								<select class="form-control" id="changeRegion" name="changeRegion">
+									{% if user.region == 'euw' %}
+									<option value="euw" selected="selected">EUW</option>
+									{% else %}
+									<option value="euw">EUW</option>
+									{% endif %}
+									{% if user.region == 'eune' %}
+									<option value="eune" selected="selected">EUNE</option>
+									{% else %}
+									<option value="eune">EUNE</option>
+									{% endif %}
+									{% if user.region == 'na' %}
+									<option value="na" selected="selected">NA</option>
+									{% else %}
+									<option value="na">NA</option>
+									{% endif %}
+									{% if user.region == 'br' %}
+									<option value="br" selected="selected">BR</option>
+									{% else %}
+									<option value="br">BR</option>
+									{% endif %}
+									{% if user.region == 'kr' %}
+									<option value="kr" selected="selected">KR</option>
+									{% else %}
+									<option value="kr">KR</option>
+									{% endif %}
+									{% if user.region == 'lan' %}
+									<option value="lan" selected="selected">LAN</option>
+									{% else %}
+									<option value="lan">LAN</option>
+									{% endif %}
+									{% if user.region == 'las' %}
+									<option value="las" selected="selected">LAS</option>
+									{% else %}
+									<option value="las">LAS</option>
+									{% endif %}
+									{% if user.region == 'oce' %}
+									<option value="oce" selected="selected">OCE</option>
+									{% else %}
+									<option value="oce">OCE</option>
+									{% endif %}
+									{% if user.region == 'tr' %}
+									<option value="tr" selected="selected">TR</option>
+									{% else %}
+									<option value="tr">TR</option>
+									{% endif %}
+									{% if user.region == 'ru' %}
+									<option value="ru" selected="selected">RU</option>
+									{% else %}
+									<option value="ru">RU</option>
+									{% endif %}
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="changeSummoner" class="col-sm-2 form-control-label">Summoner</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="changeSummoner" name="changeSummoner" value="{{ user.summoner }}" />
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<button type="submit" class="btn btn-success btn-md btn-block">Save</button>
+					</div>
+				</div>
+			</form>
+{% endblock %}
+
+{% block nonauthorizedcontent %}
+			<!-- Not available -->
+			<p>No authorization to access settings!</p>
+{% endblock %}

@@ -1,0 +1,114 @@
+body
+{
+	padding-top: 50px;
+}
+
+a.navbar-brand
+{
+	font-family: beaufortforlol;
+}
+
+.bordered
+{
+	border: 0.2em solid #d3d3d3;
+	border-radius: 1em;
+}
+
+.padding-small
+{
+	padding: 0.5em;
+}
+
+.img-editable
+{
+	-webkit-filter: grayscale(100%);
+	-webkit-filter: grayscale(1);
+	filter: grayscale(100%);
+	filter: gray;
+}
+
+.img-included
+{
+	-webkit-filter: grayscale(0%);
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0%);
+	filter: none;
+	
+	border: 0.4em solid #5cb85c;
+}
+
+.img-grid
+{
+	display: inline-block;
+	margin: 0.2em;
+	padding: 0;
+	width: 8%;
+	min-width: 4em;
+	max-width: 7em;
+	height: auto;
+}
+
+.vertical-sm
+{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.horizontal-xs
+{
+	display: inline-block;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+.horizontal-sm
+{
+	display: inline-block;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.btn-circle
+{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	padding: 6px 0;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12px;
+	line-height: 1.428571429;
+	border-radius: 15px;
+}
+
+.btn-circle.btn-lg
+{
+	width: 50px;
+	height: 50px;
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.33;
+	border-radius: 25px;
+}
+
+.btn-circle.btn-xl
+{
+	width: 70px;
+	height: 70px;
+	padding: 10px 16px;
+	font-size: 24px;
+	line-height: 1.33;
+	border-radius: 35px;
+}
+
+hr.championlist-divide
+{
+	border: 0;
+	background-color: #d3d3d3;
+	height: 0.3em;
+}
+
+#contents
+{
+	padding-top: 30px;
+}

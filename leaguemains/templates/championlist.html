@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block authorizedcontent %}
+			<!-- Hidden form -->
+			<form id="championlistForm" method="post" action="{% url 'save_championlist' %}">{% csrf_token %}
+				<input type="hidden" name="userlistID" value="{{ userList.pk_id }}" />
+				<!-- General user champion list information -->
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h4>General list information</h4>
+					</div>
+					<div class="panel-body">
+						<div class="form-group row">
+							<label for="changeListName" class="col-sm-2 form-control-label">Name</label>
+							<div class="col-sm-10">
+								<input type="text" id="changeListName" name="changeListName" class="form-control" value="{{ userList.name }}" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="changeListDescription" class="col-sm-2 form-control-label">Description</label>
+							<div class="col-sm-10">
+								<input type="text" id="changeListDescription" name="changeListDescription" class="form-control" value="{{ userList.description }}" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-offset-2 col-sm-10">
+								<div class="checkbox">
+									{% if userList.is_public == True %}
+									<label><input type="checkbox" id="changeListPublic" name="changeListPublic" checked="checked" /> Public List</label>
+									{% else %}
+									<label><input type="checkbox" id="changeListPublic" name="changeListPublic" /> Public List</label>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Champions in user champion list -->
+				<div class="panel panel-success vertical-sm">
+					<div class="panel-heading clearfix">
+						<h4 class="pull-left">Select your champions</h4>
+						<button type="button" id="toggleChampionVisibility" class="btn btn-default pull-right"><span class="glyphicon glyphicon-eye-open"></span></button>
+					</div>
+					<div class="panel-body padding-small">
+						{% for champion in championList %}
+							{% if champion.pk_id in championEntries %}
+							<img id="{{ champion.pk_id }}" class="img-editable img-grid img-circle img-included" src="{% static '' %}{{ champion.image.path }}" alt="{{ champion.name }}" />
+							{% else %}
+							<img id="{{ champion.pk_id }}" class="img-editable img-grid img-circle" src="{% static '' %}{{ champion.image.path }}" alt="{{ champion.name }}" />
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="panel-footer">
+						<a id="saveChampionlistButton" role="button" class="btn btn-success btn-md btn-block">Save</a>
+					</div>
+				</div>
+			</form>
+{% endblock %}
+
+{% block nonauthorizedcontent %}
+			<!-- Not available -->
+			<p>No authorization to access this champion list!</p>
+{% endblock %}
